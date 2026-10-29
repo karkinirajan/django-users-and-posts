@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -21,7 +22,7 @@ def Emails(request):
         ["nabarajkarki217@gmail.com", "ghimirepinky3@gmail.com"],
         fail_silently=False,
     )
-    return render(request, "blog / emails.html")
+    return render(request, "blog/emails.html")
 
 
 # def home(request):

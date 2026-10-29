@@ -43,6 +43,22 @@ Ensure the following are installed:
 - Python 3.8 or higher  
 - pip (Python package manager)  
 
+### Configuration
+
+Set a unique Django secret key before starting the application. For local development:
+
+```bash
+export DJANGO_SECRET_KEY="$(python -c 'import secrets; print(secrets.token_urlsafe(50))')"
+export DJANGO_DEBUG=true
+export DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
+Production deployments should set `DJANGO_DEBUG=false`, list their real hostnames in
+`DJANGO_ALLOWED_HOSTS`, and provide SMTP settings through `DJANGO_EMAIL_HOST`,
+`DJANGO_EMAIL_PORT`, `DJANGO_EMAIL_HOST_USER`, `DJANGO_EMAIL_HOST_PASSWORD`, and
+`DJANGO_EMAIL_USE_TLS`. Email uses Django's console backend by default for local work.
+Never commit secrets or `.env` files.
+
 ### Installation  
 
 1. Clone the repository:  
