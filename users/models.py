@@ -1,5 +1,7 @@
-from django.db import models
+import os
+
 from django.contrib.auth.models import User
+from django.db import models
 from PIL import Image
 
 
@@ -12,6 +14,10 @@ class profile(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+        # The default avatar may not exist on disk (e.g. fresh checkout); skip resizing then.
+        if not self.image or not os.path.exists(self.image.path):
+            return
 
         img = Image.open(self.image.path)
 
