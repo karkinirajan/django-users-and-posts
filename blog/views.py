@@ -1,14 +1,17 @@
-from django.shortcuts import render, get_object_or_404
-from django.core.mail import send_mail
+import os
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import (
-    ListView,
-    DetailView,
     CreateView,
-    UpdateView,
     DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
 )
+
 from .models import post
 
 
@@ -16,12 +19,13 @@ def Emails(request):
     sender = os.environ.get("EMAIL_USER")
     send_mail(
         "Alert message:",
-        "There  is a  chance of heavy rain which may cause flood to happen in your area please stay alert",
+        "There  is a  chance of heavy rain which may cause flood to happen "
+        "in your area please stay alert",
         sender,
         ["nabarajkarki217@gmail.com", "ghimirepinky3@gmail.com"],
         fail_silently=False,
     )
-    return render(request, "blog / emails.html")
+    return render(request, "blog/emails.html")
 
 
 # def home(request):
