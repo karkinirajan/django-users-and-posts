@@ -172,3 +172,12 @@ dmypy.json
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python
+# Runtime / generated artifacts (kept out of git)
+db.sqlite3
+media/
+staticfiles/
+django_go0/static/
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/

@@ -1,0 +1,36 @@
+[project]
+name = "django-users-and-posts"
+version = "1.0.0"
+description = "Django blog with user registration, profiles with avatars, and CRUD posts."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+dependencies = [
+    "django>=5.2,<5.3",
+    "django-crispy-forms>=2.7,<3",
+    "crispy-bootstrap4>=2026.2",
+    "pillow>=13,<14",
+    "whitenoise>=6.12,<7",
+    "dj-database-url>=3.1,<4",
+    "gunicorn>=26,<27",
+    "psycopg[binary]>=3.3,<4",
+    "django-storages[s3]>=1.14",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-django>=4.9",
+    "ruff>=0.8",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "django_go0.settings_test"
+python_files = ["tests.py", "test_*.py", "tests/test_*.py"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["django_go0/static", "*/migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "DJ"]
