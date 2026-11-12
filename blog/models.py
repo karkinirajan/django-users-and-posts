@@ -1,14 +1,13 @@
-from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
-from django.core.validators import URLValidator
+from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 class post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
-    url = models.URLField(200)
+    url = models.URLField(max_length=200, blank=True)
 
     date_posted = models.DateTimeField(default=timezone.now)
 

@@ -1,13 +1,14 @@
 from django.urls import path
-from .views import (
-    postListView,
-    postDetailView,
-    postCreateView,
-    postUpdateView,
-    postDeleteView,
-    UserpostListView,
-)
+
 from . import views
+from .views import (
+    UserpostListView,
+    postCreateView,
+    postDeleteView,
+    postDetailView,
+    postListView,
+    postUpdateView,
+)
 
 urlpatterns = [
     path("", postListView.as_view(), name="blog-home"),
